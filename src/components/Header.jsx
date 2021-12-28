@@ -3,30 +3,60 @@ import React from 'react'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import EmailIcon from '@mui/icons-material/Email';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import SearchIcon from '@mui/icons-material/Search';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    root: {
+        backgroundColor: "#fff"
+    },
+    searchInput: {
+        opacity: '0.6',
+        padding: '0px 8px',
+        borderRadius:'5px',
+        '&:hover': {
+            backgroundColor: '#f2f2f2'
+        },
+        '& .MuiSvgIcon-root':{
+            marginRight: '8px',
+        }
+
+    }
+});
 
 function Header() {
+    const classes = useStyles();
     return (
         <>
-            <AppBar position='static'>
+            <AppBar
+                className={classes.root}
+                position='static'
+            >
                 <Toolbar>
-                    <Grid container>
+                    <Grid
+                        container
+                        alignItems='center'>
                         <Grid item>
-                            <InputBase />
+                            <InputBase
+                                placeholder='search topics'
+                                className={classes.searchInput}
+                                startAdornment={<SearchIcon />}
+                            />
                         </Grid>
                         <Grid item sm></Grid>
                         <Grid item>
                             <IconButton>
                                 <Badge badgeContent={4} color="secondary">
-                                    <NotificationsNoneIcon/>
+                                    <NotificationsNoneIcon />
                                 </Badge>
                             </IconButton>
                             <IconButton>
                                 <Badge badgeContent={5} color="success">
-                                    <EmailIcon/>
+                                    <EmailIcon />
                                 </Badge>
                             </IconButton>
                             <IconButton>
-                                    <PowerSettingsNewIcon/>
+                                <PowerSettingsNewIcon />
                             </IconButton>
                         </Grid>
                     </Grid>
