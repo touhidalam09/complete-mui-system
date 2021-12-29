@@ -3,8 +3,7 @@ import Header from '../components/Header';
 import { makeStyles, ThemeProvider } from '@mui/styles';
 import { CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
-import PageHeader from '../components/PageHeader';
-import GroupIcon from '@mui/icons-material/Group';
+import Employee from '../pages/Employee/Employee';
 
 const theme = createTheme({
   palette: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles({
   appMenu: {
     paddingLeft: '320px',
     width: '100%',
-    transform:'translateZ(0)'
+    transform: 'translateZ(0)'
   }
 })
 
@@ -30,11 +29,7 @@ function App() {
         <SideMenus />
         <div className={classes.appMenu}>
           <Header />
-          <PageHeader 
-            title = "Page Title"
-            subTitle = "Page Description ..."
-            icon = {<GroupIcon fontSize='large'/>}
-          />
+          <Employee />
         </div>
         <CssBaseline />
       </ThemeProvider>
