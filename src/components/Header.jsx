@@ -6,6 +6,7 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from '@mui/styles';
 
+
 const useStyles = makeStyles({
     root: {
         backgroundColor: "#fff"
@@ -13,12 +14,12 @@ const useStyles = makeStyles({
     searchInput: {
         opacity: '0.6',
         padding: '0px 8px',
-        borderRadius:'5px',
+        borderRadius: '5px',
         '&:hover': {
             backgroundColor: '#f2f2f2'
         },
-        '& .MuiSvgIcon-root':{
-            marginRight: '8px',
+        '& .MuiSvgIcon-root': {
+            marginRight: '8px'
         }
 
     }
@@ -29,8 +30,8 @@ function Header() {
     return (
         <>
             <AppBar
-                className={classes.root}
                 position='static'
+                className={classes.root}
             >
                 <Toolbar>
                     <Grid
@@ -51,7 +52,7 @@ function Header() {
                                 </Badge>
                             </IconButton>
                             <IconButton>
-                                <Badge badgeContent={5} color="success">
+                                <Badge badgeContent={5} color="primary">
                                     <EmailIcon />
                                 </Badge>
                             </IconButton>
@@ -60,7 +61,6 @@ function Header() {
                             </IconButton>
                         </Grid>
                     </Grid>
-
                 </Toolbar>
             </AppBar>
         </>
