@@ -76,6 +76,12 @@ function EmployeeForm() {
                             onChange={handleInputChange}
                             options={employeeService.getDepartmentCollection()}
                         />
+                        {/* <Controls.DatePickers
+                            label="Hire Date"
+                            name="hireDate"
+                            value={values.hireDate}
+                            onChange={handleInputChange}
+                        /> */}
                         <Controls.Checkbox
                             label="Parmanent Employee"
                             name="isParmanent"
