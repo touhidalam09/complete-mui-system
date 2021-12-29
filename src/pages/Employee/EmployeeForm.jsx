@@ -88,6 +88,16 @@ function EmployeeForm() {
                             value={values.isParmanent}
                             onChange={handleInputChange}
                         />
+                        <div>
+                            <Controls.Button
+                                type="submit"
+                                text="Submit"
+                            />
+                            <Controls.Button
+                                text="Reset"
+                                color="primary"
+                            />
+                        </div>
                     </Grid>
                 </Grid>
             </Form>
