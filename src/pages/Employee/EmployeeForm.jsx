@@ -11,7 +11,7 @@ const genderItems = [
 ];
 
 const initializeFValue = {
-  id: "",
+  id: 0,
   fullName: "",
   email: "",
   mobile: "",
@@ -70,6 +70,7 @@ function EmployeeForm() {
             <Controls.Input
               label="Full name"
               name="fullName"
+              type="text"
               value={values.fullName}
               onChange={handleInputChange}
               error={errors.fullName}
@@ -77,6 +78,7 @@ function EmployeeForm() {
             <Controls.Input
               label="Email"
               name="email"
+              type="email"
               value={values.email}
               onChange={handleInputChange}
               error={errors.email}
@@ -84,6 +86,7 @@ function EmployeeForm() {
             <Controls.Input
               label="Mobile"
               name="mobile"
+              type="number"
               value={values.mobile}
               onChange={handleInputChange}
               error={errors.mobile}
@@ -91,6 +94,7 @@ function EmployeeForm() {
             <Controls.Input
               label="City"
               name="city"
+              type="text"
               value={values.city}
               onChange={handleInputChange}
             />

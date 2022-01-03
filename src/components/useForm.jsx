@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles({
+  root: {
+    "& .MuiFormControl-root": {
+      width: "80%",
+      margin: "8px",
+    },
+  },
+});
+
 // useForm START
 export function useForm(initializeFValue, validateOnChange = false, validate) {
   const [values, setValues] = useState(initializeFValue);
@@ -35,14 +44,6 @@ export function useForm(initializeFValue, validateOnChange = false, validate) {
 // useForm END
 
 // Form Component START
-const useStyles = makeStyles({
-  root: {
-    "& .MuiFormControl-root": {
-      width: "80%",
-      margin: "8px",
-    },
-  },
-});
 
 export function Form(props) {
   const classes = useStyles();
