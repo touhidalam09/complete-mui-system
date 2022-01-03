@@ -57,8 +57,8 @@ function EmployeeForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log(validate());
-      window.alert("Validated");
+      employeeService.insertEmployee(values);
+      resetForm();
     }
   };
 
@@ -118,9 +118,9 @@ function EmployeeForm() {
                             onChange={handleInputChange}
                         /> */}
             <Controls.Checkbox
-              label="Parmanent Employee"
-              name="isParmanent"
-              value={values.isParmanent}
+              label="Permanent Employee"
+              name="isPermanent"
+              value={values.isPermanent}
               onChange={handleInputChange}
             />
             <div>
