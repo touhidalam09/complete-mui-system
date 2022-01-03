@@ -26,7 +26,7 @@ function EmployeeForm() {
   //Form validation
 
   const validate = (fieldValues = values) => {
-    let temp = {};
+    let temp = { ...errors };
 
     if ("fullName" in fieldValues)
       temp.fullName =
