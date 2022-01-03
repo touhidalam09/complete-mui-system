@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# Getting Started with Create React App and Material UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple Form with modal and Table view system design for learning purpose 
 
-## Branch Information
+## Branches Information
 
 1. `layouts` : design layouts structure side-menu, header, page container
 2. `employeeForm` : Design reuseable file structure ... Form, Input, Select-option etc
