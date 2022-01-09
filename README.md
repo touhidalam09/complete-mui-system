@@ -8,5 +8,6 @@ Simple Form with modal and Table view system design for learning purpose
 2. `employeeForm` : Design reuseable file structure ... Form, Input, Select-option etc
 3. `dataService` : Create a file where store employee information and also store in browser localStorage
 4. `dataTable` : Design Table with reuseable components , PAGINATION done 
-5. `dataTable -- orderingCell` : Asc/ Dsec ordering dataTable
+5. `--- orderingCell` : Asc/ Dsec ordering dataTable
+6. `------ actionDataTableCell` : createing update and delete button implement to real performance
 
