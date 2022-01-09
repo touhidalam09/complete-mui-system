@@ -5,6 +5,7 @@ import {
   TableRow,
   TableCell,
   TablePagination,
+  TableSortLabel,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
@@ -31,17 +32,35 @@ function useTable(records, headCells) {
   const pages = [5, 10, 25];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
+  const [order, setOrder] = useState();
+  const [orderBy, setOrderBy] = useState();
 
   const TblContainer = (props) => (
     <Table className={classes.table}>{props.children}</Table>
   );
 
   const TblHead = (props) => {
+    const handleSortRequest = (cellId) => {
+      const isAsc = orderBy === cellId && order === "asc";
+      setOrder(isAsc ? "desc" : "asc");
+      setOrderBy(cellId);
+    };
+
     return (
       <TableHead>
         <TableRow>
           {headCells.map((headCell) => (
-            <TableCell key={headCell.id}>{headCell.label}</TableCell>
+            <TableCell key={headCell.id}>
+              <TableSortLabel
+                active={orderBy === headCell.id}
+                direction={orderBy === headCell.id ? order : "asc"}
+                onClick={() => {
+                  handleSortRequest(headCell.id);
+                }}
+              >
+                {headCell.label}
+              </TableSortLabel>
+            </TableCell>
           ))}
         </TableRow>
       </TableHead>
