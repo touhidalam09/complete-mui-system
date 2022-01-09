@@ -4,7 +4,7 @@ import EmployeeForm from "./EmployeeForm";
 import GroupIcon from "@mui/icons-material/Group";
 import { Paper, TableBody, TableCell, TableRow } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import useTable from "../../components/Controls/useTable";
+import useTable from "../../components/Controls/UseTable";
 import * as employeeService from "../../services/employeeService";
 
 const useStyles = makeStyles({
@@ -24,7 +24,8 @@ const headCells = [
 function Employee() {
   const classes = useStyles();
   const [records, setRecords] = useState(employeeService.getAllEmployee());
-  const { TblContainer, TblHead } = useTable(records, headCells);
+  const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
+    useTable(records, headCells);
 
   return (
     <>
@@ -38,7 +39,7 @@ function Employee() {
         <TblContainer>
           <TblHead />
           <TableBody>
-            {records.map((item) => (
+            {recordsAfterPagingAndSorting().map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.fullName}</TableCell>
                 <TableCell>{item.email}</TableCell>
@@ -48,6 +49,8 @@ function Employee() {
             ))}
           </TableBody>
         </TblContainer>
+
+        <TblPagination />
       </Paper>
     </>
   );
