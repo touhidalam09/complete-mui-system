@@ -8,9 +8,9 @@ const useStyles = makeStyles({
     margin: "4px",
   },
   secondary: {
-    backgroundColor: "#EC3504",
+    backgroundColor: "#FEDFD7",
     "& .MuiButton-label": {
-      color: "#FFE4DD",
+      color: "#F83703",
     },
   },
   primary: {

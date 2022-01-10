@@ -14,7 +14,12 @@ import {
 import { makeStyles } from "@mui/styles";
 import useTable from "../../components/Controls/UseTable";
 import * as employeeService from "../../services/employeeService";
-import { AddReaction, Search } from "@mui/icons-material";
+import {
+  AddReaction,
+  DeleteOutlined,
+  EditOutlined,
+  Search,
+} from "@mui/icons-material";
 import PopUp from "../../components/Controls/Popup";
 
 const useStyles = makeStyles({
@@ -41,6 +46,7 @@ const headCells = [
 
 function Employee() {
   const classes = useStyles();
+  const [recordsForEdit, setRecordsForEdit] = useState(null);
   const [records, setRecords] = useState(employeeService.getAllEmployee());
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
@@ -64,6 +70,21 @@ function Employee() {
       },
     });
   };
+
+  const addOrEdit = (employee, resetForm) => {
+    if (employee.id === 0) employeeService.insertEmployee(employee);
+    else employeeService.updateEmployee(employee);
+    resetForm();
+    setRecordsForEdit(null);
+    setOpenPopup(false);
+    setRecords(employeeService.getAllEmployee());
+  };
+
+  const openInPopup = (item) => {
+    setRecordsForEdit(item);
+    setOpenPopup(true);
+  };
+
   return (
     <>
       <PageHeader
@@ -90,7 +111,10 @@ function Employee() {
             text="Add New"
             variant="outlined"
             startIcon={<AddReaction />}
-            onClick={() => setOpenPopup(true)}
+            onClick={() => {
+              setOpenPopup(true);
+              setRecordsForEdit(null);
+            }}
           />
         </Toolbar>
 
@@ -103,6 +127,17 @@ function Employee() {
                 <TableCell>{item.email}</TableCell>
                 <TableCell>{item.mobile}</TableCell>
                 <TableCell>{item.department}</TableCell>
+                <TableCell>
+                  <Controls.ActionButton
+                    onClick={() => openInPopup(item)}
+                    color="primary"
+                  >
+                    <EditOutlined fontSize="small" />
+                  </Controls.ActionButton>
+                  <Controls.ActionButton color="secondary">
+                    <DeleteOutlined fontSize="small" />
+                  </Controls.ActionButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -115,7 +150,7 @@ function Employee() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <EmployeeForm />
+        <EmployeeForm addOrEdit={addOrEdit} recordsForEdit={recordsForEdit} />
       </PopUp>
     </>
   );

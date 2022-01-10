@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
       fontWeight: "300",
     },
     "& tbody tr:hover": {
-      backgroundColor: "#AED6F1",
+      backgroundColor: "#F5FFFE",
       cursor: "pointer",
     },
   },

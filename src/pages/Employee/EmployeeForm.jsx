@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Controls from "../../components/Controls/Controls";
 import { useForm, Form } from "../../components/useForm";
 import * as employeeService from "../../services/employeeService";
@@ -22,9 +22,9 @@ const initializeFValue = {
   isPermanent: false,
 };
 
-function EmployeeForm() {
+function EmployeeForm(props) {
   //Form validation
-
+  const { recordsForEdit, addOrEdit } = props;
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
 
@@ -57,10 +57,18 @@ function EmployeeForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      employeeService.insertEmployee(values);
-      resetForm();
+      // employeeService.insertEmployee(values);
+      // resetForm();
+      addOrEdit(values, resetForm);
     }
   };
+
+  useEffect(() => {
+    if (recordsForEdit != null)
+      setValues({
+        ...recordsForEdit,
+      });
+  }, [recordsForEdit]);
 
   return (
     <>
