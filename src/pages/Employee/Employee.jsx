@@ -21,6 +21,7 @@ import {
   Search,
 } from "@mui/icons-material";
 import PopUp from "../../components/Controls/Popup";
+import Notification from "../../components/Controls/Notification";
 
 const useStyles = makeStyles({
   paperForm: {
@@ -48,13 +49,17 @@ function Employee() {
   const classes = useStyles();
   const [recordsForEdit, setRecordsForEdit] = useState(null);
   const [records, setRecords] = useState(employeeService.getAllEmployee());
+  const [openPopup, setOpenPopup] = useState(false);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "success",
+  });
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
     },
   });
-  const [openPopup, setOpenPopup] = useState(false);
-
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
     useTable(records, headCells, filterFn);
 
@@ -78,6 +83,11 @@ function Employee() {
     setRecordsForEdit(null);
     setOpenPopup(false);
     setRecords(employeeService.getAllEmployee());
+    setNotify({
+      isOpen: true,
+      message: "Submitted Successfully",
+      type: "success",
+    });
   };
 
   const openInPopup = (item) => {
@@ -152,6 +162,7 @@ function Employee() {
       >
         <EmployeeForm addOrEdit={addOrEdit} recordsForEdit={recordsForEdit} />
       </PopUp>
+      <Notification notify={notify} setNotify={setNotify} />
     </>
   );
 }
