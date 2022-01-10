@@ -14,7 +14,8 @@ import {
 import { makeStyles } from "@mui/styles";
 import useTable from "../../components/Controls/UseTable";
 import * as employeeService from "../../services/employeeService";
-import { Search } from "@mui/icons-material";
+import { AddReaction, Search } from "@mui/icons-material";
+import PopUp from "../../components/Controls/Popup";
 
 const useStyles = makeStyles({
   paperForm: {
@@ -23,6 +24,10 @@ const useStyles = makeStyles({
   },
   searchInput: {
     width: "75%",
+  },
+  newButton: {
+    position: "absolute",
+    right: "-10px",
   },
 });
 
@@ -42,6 +47,7 @@ function Employee() {
       return items;
     },
   });
+  const [openPopup, setOpenPopup] = useState(false);
 
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
     useTable(records, headCells, filterFn);
@@ -66,8 +72,6 @@ function Employee() {
         icon={<GroupIcon fontSize="large" />}
       />
       <Paper className={classes.paperForm}>
-        {/* <EmployeeForm /> */}
-
         <Toolbar>
           <Controls.Input
             className={classes.searchInput}
@@ -80,6 +84,13 @@ function Employee() {
               ),
             }}
             onChange={handleSearch}
+          />
+          <Controls.Button
+            className={classes.newButton}
+            text="Add New"
+            variant="outlined"
+            startIcon={<AddReaction />}
+            onClick={() => setOpenPopup(true)}
           />
         </Toolbar>
 
@@ -99,6 +110,13 @@ function Employee() {
 
         <TblPagination />
       </Paper>
+      <PopUp
+        title="Employee Form"
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      >
+        <EmployeeForm />
+      </PopUp>
     </>
   );
 }
