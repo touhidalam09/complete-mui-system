@@ -10,5 +10,5 @@ Simple Form with modal and Table view system design for learning purpose
 4. `dataTable` : Design Table with reuseable components , PAGINATION done 
 5. `--- orderingCell` : Asc/ Dsec ordering dataTable
 6. `------ actionDataTableCell` : createing update and delete button implement to real performance
-7. `updateDelete`: Updated Table Row, Notification Alert after submitted, Delete a Row from table
+7. `updateDelete`: Updated Table Row, Notification Alert after submitted, Delete a record from table, Confirm Dialog box
 
