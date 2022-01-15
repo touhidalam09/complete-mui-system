@@ -3,6 +3,11 @@ import PageHeader from "../../components/PageHeader";
 import EmployeeForm from "./EmployeeForm";
 import Controls from "../../components/Controls/Controls";
 import GroupIcon from "@mui/icons-material/Group";
+import { makeStyles } from "@mui/styles";
+import useTable from "../../components/Controls/UseTable";
+import * as employeeService from "../../services/employeeService";
+import PopUp from "../../components/Controls/Popup";
+import Notification from "../../components/Controls/Notification";
 import {
   InputAdornment,
   Paper,
@@ -11,17 +16,13 @@ import {
   TableRow,
   Toolbar,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import useTable from "../../components/Controls/UseTable";
-import * as employeeService from "../../services/employeeService";
 import {
   AddReaction,
   DeleteOutlined,
   EditOutlined,
   Search,
 } from "@mui/icons-material";
-import PopUp from "../../components/Controls/Popup";
-import Notification from "../../components/Controls/Notification";
+import ConfirmDialog from "../../components/Controls/ConfirmDialog";
 
 const useStyles = makeStyles({
   paperForm: {
@@ -96,16 +97,24 @@ function Employee() {
   };
 
   const onDelete = (id) => {
-    if (window.confirm("Are you sure to delete this record")) {
-      employeeService.deleteEmployee(id);
-      setRecords(employeeService.getAllEmployee());
-      setNotify({
-        isOpen: true,
-        message: "Deleted Successfully",
-        type: "warning",
-      });
-    }
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
+    employeeService.deleteEmployee(id);
+    setRecords(employeeService.getAllEmployee());
+    setNotify({
+      isOpen: true,
+      message: "Deleted Successfully",
+      type: "warning",
+    });
   };
+
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
 
   return (
     <>
@@ -159,7 +168,14 @@ function Employee() {
                   <Controls.ActionButton
                     color="secondary"
                     onClick={() => {
-                      onDelete(item.id);
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are you sure to delete this record?",
+                        subTitle: "You can't undo this operation",
+                        onConfirm: () => {
+                          onDelete(item.id);
+                        },
+                      });
                     }}
                   >
                     <DeleteOutlined fontSize="small" />
@@ -180,6 +196,10 @@ function Employee() {
         <EmployeeForm addOrEdit={addOrEdit} recordsForEdit={recordsForEdit} />
       </PopUp>
       <Notification notify={notify} setNotify={setNotify} />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </>
   );
 }
