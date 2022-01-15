@@ -3,9 +3,7 @@ import { makeStyles } from "@mui/styles";
 import React from "react";
 
 const useStyles = makeStyles({
-  root: {
-    top: "10px",
-  },
+  root: {},
 });
 
 function Notification(props) {
@@ -25,7 +23,7 @@ function Notification(props) {
   return (
     <Snackbar
       className={classes.root}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       open={notify.isOpen}
       autoHideDuration={2000}
       onClose={handleClose}
