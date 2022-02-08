@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/touhidalam09/complete_mui_system/static/css/main.0dedab61.chunk.css",
+    "main.js": "/touhidalam09/complete_mui_system/static/js/main.78cdf5d2.chunk.js",
+    "main.js.map": "/touhidalam09/complete_mui_system/static/js/main.78cdf5d2.chunk.js.map",
+    "runtime-main.js": "/touhidalam09/complete_mui_system/static/js/runtime-main.d9d64c2e.js",
+    "runtime-main.js.map": "/touhidalam09/complete_mui_system/static/js/runtime-main.d9d64c2e.js.map",
+    "static/js/2.32204227.chunk.js": "/touhidalam09/complete_mui_system/static/js/2.32204227.chunk.js",
+    "static/js/2.32204227.chunk.js.map": "/touhidalam09/complete_mui_system/static/js/2.32204227.chunk.js.map",
+    "static/js/3.afa10aa8.chunk.js": "/touhidalam09/complete_mui_system/static/js/3.afa10aa8.chunk.js",
+    "static/js/3.afa10aa8.chunk.js.map": "/touhidalam09/complete_mui_system/static/js/3.afa10aa8.chunk.js.map",
+    "index.html": "/touhidalam09/complete_mui_system/index.html",
+    "precache-manifest.eca1036f02856cda80e25c6b325f59e1.js": "/touhidalam09/complete_mui_system/precache-manifest.eca1036f02856cda80e25c6b325f59e1.js",
+    "service-worker.js": "/touhidalam09/complete_mui_system/service-worker.js",
+    "static/css/main.0dedab61.chunk.css.map": "/touhidalam09/complete_mui_system/static/css/main.0dedab61.chunk.css.map",
+    "static/js/2.32204227.chunk.js.LICENSE.txt": "/touhidalam09/complete_mui_system/static/js/2.32204227.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9d64c2e.js",
+    "static/js/2.32204227.chunk.js",
+    "static/css/main.0dedab61.chunk.css",
+    "static/js/main.78cdf5d2.chunk.js"
+  ]
+}
