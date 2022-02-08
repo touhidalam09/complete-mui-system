@@ -4,6 +4,7 @@ import { makeStyles, ThemeProvider } from "@mui/styles";
 import { CssBaseline } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import Employee from "../pages/Employee/Employee";
+import React from "react";
 
 const theme = createTheme({
   palette: {

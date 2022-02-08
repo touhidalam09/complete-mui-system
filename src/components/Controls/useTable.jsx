@@ -20,13 +20,13 @@ const useStyles = makeStyles(() => ({
       fontWeight: "300",
     },
     "& tbody tr:hover": {
-      backgroundColor: "#AED6F1",
+      backgroundColor: "#F5FFFE",
       cursor: "pointer",
     },
   },
 }));
 
-function useTable(records, headCells) {
+function useTable(records, headCells, filterFn) {
   const classes = useStyles();
 
   const pages = [5, 10, 25];
@@ -51,15 +51,19 @@ function useTable(records, headCells) {
         <TableRow>
           {headCells.map((headCell) => (
             <TableCell key={headCell.id}>
-              <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : "asc"}
-                onClick={() => {
-                  handleSortRequest(headCell.id);
-                }}
-              >
-                {headCell.label}
-              </TableSortLabel>
+              {headCell.disableSorting ? (
+                headCell.label
+              ) : (
+                <TableSortLabel
+                  active={orderBy === headCell.id}
+                  direction={orderBy === headCell.id ? order : "asc"}
+                  onClick={() => {
+                    handleSortRequest(headCell.id);
+                  }}
+                >
+                  {headCell.label}
+                </TableSortLabel>
+              )}
             </TableCell>
           ))}
         </TableRow>
@@ -119,10 +123,10 @@ function useTable(records, headCells) {
   }
 
   const recordsAfterPagingAndSorting = () => {
-    return stableSort(records, getComparator(order, orderBy)).slice(
-      page * rowsPerPage,
-      (page + 1) * rowsPerPage
-    );
+    return stableSort(
+      filterFn.fn(records),
+      getComparator(order, orderBy)
+    ).slice(page * rowsPerPage, (page + 1) * rowsPerPage);
   };
 
   return { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting };
