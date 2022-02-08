@@ -4,7 +4,7 @@ import EmployeeForm from "./EmployeeForm";
 import Controls from "../../components/Controls/Controls";
 import GroupIcon from "@mui/icons-material/Group";
 import { makeStyles } from "@mui/styles";
-import useTable from "../../components/Controls/UseTable";
+import useTable from "../../components/Controls/useTable";
 import * as employeeService from "../../services/employeeService";
 import PopUp from "../../components/Controls/Popup";
 import Notification from "../../components/Controls/Notification";
