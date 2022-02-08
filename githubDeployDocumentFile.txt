@@ -1,0 +1,24 @@
+npm install gh-pages --save-dev
+"homepage":"https://github.com/touhidalam09/complete_mui_system",
+  
+
+"scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
+}
+
+
+npm run deploy
+######################################
+goto github.com
+set default branach gh-page
+Setting > page > live link click BOOM!
+##############################################
+no you change on code update show on deploy version...
+Setting up a Github Actions workflow( install, buil and deploy)
+
+create a folder in the project directory..
+.github [folder] > workflows [folder] > workflow.yml [file]
+##############################################
+In the workflow.yml file write...
+https://github.com/JamesIves/github-pages-deploy-action
