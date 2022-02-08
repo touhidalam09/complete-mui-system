@@ -1,5 +1,8 @@
 # Getting Started with Create React App and Material UI
 
+### `npm install`
+## `npm start`
+
 Simple Form with modal and Table view system design for learning purpose 
 
 ## Branches Information
